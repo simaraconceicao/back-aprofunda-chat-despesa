@@ -7,11 +7,11 @@ export class CreateDespesaUseCase {
     ){}
 
     execute(despesaParams: Partial<Despesa>): Despesa {
-    const despesa = {
-        ...despesaParams
-    } as Despesa;
+        const despesa = {
+            ...despesaParams
+        } as Despesa;
 
-    this.despesaRepository.save(despesa);
+        this.despesaRepository.save(despesa);
         return despesa;
     } 
 }
