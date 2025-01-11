@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { configureDependencies } from '../infrastructure/utils/config';
 import { connectDB } from '../infrastructure/database/connection'
+import dotenv from 'dotenv'
+dotenv.config();
 
 export const app = express();
 connectDB();
@@ -15,7 +17,7 @@ app.get('/despesas/:userId', (req, res) => despesaController.getAll(req, res));
 app.post('/chat', (req, res) => chatController.open(req, res));
 
 if (require.main === module) {
-  const PORT = 3333;
+  const PORT = process.env.PORT || 3333;
   app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
   })
